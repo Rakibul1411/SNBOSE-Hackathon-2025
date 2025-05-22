@@ -4,3 +4,6 @@ export { default as WaveSimulation } from './WaveSimulation'
 export { default as DopplerEffectSimulation } from './DopplerEffectSimulation'
 export { default as ProjectileMotionSimulation } from './ProjectileMotionSimulation'
 export { default as RelativeMotionSimulation } from './RelativeMotionSimulation'
+export { default as LewisBondQuiz } from '../simulation-topics/LewisBondSimulation'
+
+

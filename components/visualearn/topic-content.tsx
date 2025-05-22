@@ -13,6 +13,12 @@ import WaveSimulation from "./simulation-topics/WaveSimulation"
 import DopplerEffectSimulation from "./simulation-topics/DopplerEffectSimulation"
 import ProjectileMotionSimulation from "./simulation-topics/ProjectileMotionSimulation"
 import RelativeMotionSimulation from "./simulation-topics/RelativeMotionSimulation"
+import LewisBondQuiz from "./quiz-topics/LewisBondQuiz"
+
+import ProjectileMotionQuiz from "./quiz-topics/ProjectileMotionQuiz"
+import LewisBondSimulation from "./simulation-topics/LewisBondSimulation"
+
+//ProjectileMotionQuiz
 
 interface TopicContentProps {
   subject: string
@@ -165,6 +171,7 @@ export default function TopicContent({ subject, chapter, topic }: TopicContentPr
   }
 
   const renderVisualization = () => {
+    // Physics 
     if (subject === "physics" && chapter === "mechanics" && topic.id === "pendulum") {
       return <PendulumSimulation />
     }
@@ -180,6 +187,36 @@ export default function TopicContent({ subject, chapter, topic }: TopicContentPr
     if (subject === "physics" && chapter === "motion" && topic.id === "relative-motion") {
       return <RelativeMotionSimulation />
     }
+
+    // chemistry
+    if (subject === "chemistry" && chapter === "bonding" && topic.id === "lewis-structures") {
+      return <LewisBondSimulation />
+    }
+    // Add more mappings as needed
+    return <p>No visualization available for this topic.</p>
+  }
+
+  //renderQuiz
+  const renderQuiz = () => {
+    // if (subject === "physics" && chapter === "mechanics" && topic.id === "pendulum") {
+    //   return <PendulumSimulation />
+    // }
+    // if (subject === "physics" && chapter === "waves" && topic.id === "wave-properties") {
+    //   return <WaveSimulation />
+    // }
+    // if (subject === "physics" && chapter === "waves" && topic.id === "doppler-effect") {
+    //   return <DopplerEffectSimulation />
+    // }
+    if (subject === "physics" && chapter === "motion" && topic.id === "projectile-motion") {
+      return <ProjectileMotionQuiz />
+    }
+
+    if (subject === "chemistry" && chapter === "bonding" && topic.id === "lewis-structures") {
+      return <LewisBondQuiz />
+    }
+    // if (subject === "physics" && chapter === "motion" && topic.id === "relative-motion") {
+    //   return <RelativeMotionSimulation />
+    // }
     // Add more mappings as needed
     return <p>No visualization available for this topic.</p>
   }
@@ -875,6 +912,16 @@ export default function TopicContent({ subject, chapter, topic }: TopicContentPr
             <Card>
               <CardContent className="pt-6">
                 {renderVisualization()}
+              </CardContent>
+            </Card>
+          </motion.div>
+        </TabsContent>
+
+        <TabsContent value="quiz" className="space-y-4">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+            <Card>
+              <CardContent className="pt-6">
+                {renderQuiz()}
               </CardContent>
             </Card>
           </motion.div>
